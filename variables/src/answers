@@ -1,0 +1,51 @@
+part 1
+--------------------------------------------------------
+fn main() {
+    let mut missiles = 8;
+    let ready = 2; 
+    println!("Firing {} of my {} missiles", ready, missiles);
+    missiles = missiles - ready;
+    println!("{} missiles left", missiles);
+}
+
+part2
+--------------------------------------------------------
+
+
+const STARTING_MISSILES:i32 = 8;
+const READY_AMOUNT:i32 = 2;
+
+fn main() {
+    let mut missiles:i32 = STARTING_MISSILES;
+    let ready:i32 = READY_AMOUNT; 
+    println!("Firing {} of my {} missiles", ready, missiles);
+    missiles = missiles - ready;
+    println!("{} missiles left", missiles);
+}
+
+extra 3
+--------------------------------------------------------
+
+const STARTING_MISSILES:i32 = 8;
+const READY_AMOUNT:i32 = 2;
+
+fn main() {
+    let unused:i32 = 56;
+    READY_AMOUNT = 1;
+    let (missiles, ready) = (STARTING_MISSILES, READY_AMOUNT);
+    println!("Firing {} of my {} missiles", ready, missiles);
+    println!("{} missiles left", missiles - ready);
+}
+
+
+1- Instead of changing missiles, use the value missiles - ready directly in the second println!(...)
+What warning does cargo emit when you run your program now? Can you fix it?
+warning: variable does not need to be mutable.
+yes let (missiles, ready)->fixed
+
+2- Add another variable to your program but don't use it.
+What does cargo say when you run your program?
+warning: unused variable: `unused'
+
+3- Try modifying a constant in main() (for example, READY_AMOUNT = 1). What does the error look like?
+error[E0070]: invalid left-hand side of assignment.
